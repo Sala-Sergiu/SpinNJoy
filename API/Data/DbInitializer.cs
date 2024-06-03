@@ -87,7 +87,7 @@ namespace API.Data
                 new Product
                 {
                     Brand = "Cannondale",
-                    Model = "SuperSix EVO Hi-MOD Disc Dura Ace",
+                    Model = "SuperSix EVO Hi-MOD",
                     Type = "Road",    
                     Color = "Black",
                     Price = 899900,
