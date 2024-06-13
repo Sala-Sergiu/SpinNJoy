@@ -53,7 +53,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "*",
-        element: <Navigate replace to="/not-found" />,
+        element: <Navigate replace to="not-found" />,
       },
     ],
   },
