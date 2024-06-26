@@ -61,7 +61,9 @@ export default function Orders() {
               <TableCell component="th" scope="row">
                 {order.id}
               </TableCell>
-              <TableCell align="right">{formatCurrency(order.total)}</TableCell>
+              <TableCell align="right">
+                {formatCurrency(order.total / 100)}
+              </TableCell>
               <TableCell align="right">
                 {order.orderDate.split("T")[0]}
               </TableCell>

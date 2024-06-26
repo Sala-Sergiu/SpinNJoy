@@ -19,6 +19,7 @@ import {
   removeBasketItemAsync,
 } from "../basket/basketSlice";
 import { fetchProductAsync, productSelectors } from "./catalogSlice";
+import { formatCurrency } from "../../app/util/helperFunctions";
 
 export default function ProductDetails() {
   const { basket, status } = useAppSelector((state) => state.basket);
@@ -81,7 +82,7 @@ export default function ProductDetails() {
         <Typography variant="h3">{product.brand}</Typography>
         <Divider sx={{ mb: 2 }} />
         <Typography variant="h4" color={"secondary.main"}>
-          ${product.price / 100}
+          {formatCurrency(product.price / 100)}
         </Typography>
         <TableContainer>
           <Table>

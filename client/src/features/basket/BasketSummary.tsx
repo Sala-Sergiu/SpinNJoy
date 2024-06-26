@@ -27,7 +27,7 @@ export default function BasketSummary({ subtotal }: Props) {
   //     (sum, item) => sum + item.quantity * (item.price / 100),
   //     0
   //   ) ?? 0;
-  const deliveryFee = subtotal === 0 ? 0 : subtotal >= 2500 ? 0 : 50;
+  const deliveryFee = subtotal === 0 ? 0 : subtotal > 2500 ? 0 : 50;
   const total = subtotal + deliveryFee;
 
   return (

@@ -8,11 +8,11 @@ import ProductDetails from "../../features/catalog/ProductDetails";
 import ServerError from "../errors/ServerError";
 import NotFound from "../errors/NotFound";
 import BasketPage from "../../features/basket/BasketPage";
-import CheckoutPage from "../../features/checkout/CheckoutPage";
 import Login from "../../features/account/Login";
 import Register from "../../features/account/Register";
 import RequireAuth from "./RequireAuth";
 import Orders from "../../features/orders/Orders";
+import CheckOutWrapper from "../../features/checkout/CheckOutWrapper";
 
 export const router = createBrowserRouter([
   {
@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
         children: [
           {
             path: "checkout",
-            element: <CheckoutPage />,
+            element: <CheckOutWrapper />,
           },
           {
             path: "orders",
