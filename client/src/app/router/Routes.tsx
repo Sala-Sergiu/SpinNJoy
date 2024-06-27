@@ -3,7 +3,6 @@ import App from "../layout/App";
 import Catalog from "../../features/catalog/Catalog";
 import AboutPage from "../../features/about/AboutPage";
 import ContactPage from "../../features/contact/ContactPage";
-import HomePage from "../../features/home/HomePage";
 import ProductDetails from "../../features/catalog/ProductDetails";
 import ServerError from "../errors/ServerError";
 import NotFound from "../errors/NotFound";
@@ -32,10 +31,7 @@ export const router = createBrowserRouter([
           },
         ],
       },
-      {
-        path: "",
-        element: <HomePage />,
-      },
+
       {
         path: "catalog",
         element: <Catalog />,

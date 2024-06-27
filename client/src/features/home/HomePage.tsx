@@ -11,7 +11,7 @@ export default function HomePage() {
   };
 
   return (
-    <>
+    <div style={{ overflow: "hidden" }}>
       <Slider {...settings}>
         <div>
           <img
@@ -38,6 +38,6 @@ export default function HomePage() {
       <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
         <Typography variant="h1">Welcome to the store</Typography>
       </Box>
-    </>
+    </div>
   );
 }

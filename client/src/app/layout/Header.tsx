@@ -62,7 +62,7 @@ export default function Header({ handleThemeChange }: Props) {
   const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
 
   return (
-    <AppBar position="static" sx={{ marginBottom: 4 }}>
+    <AppBar position="static">
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
         <Box>
           <Typography variant="h5" component={NavLink} to="/" sx={styles}>
