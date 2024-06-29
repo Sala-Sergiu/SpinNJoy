@@ -77,6 +77,11 @@ export default function Header({ handleThemeChange }: Props) {
                 {title.toUpperCase()}
               </ListItem>
             ))}
+            {user && user.roles?.includes("Admin") && (
+              <ListItem component={NavLink} to={"/inventory"} sx={styles}>
+                INVENTORY
+              </ListItem>
+            )}
           </List>
         </Box>
         <Box sx={{ display: "flex" }}>

@@ -12,26 +12,13 @@ import Register from "../../features/account/Register";
 import RequireAuth from "./RequireAuth";
 import Orders from "../../features/orders/Orders";
 import CheckOutWrapper from "../../features/checkout/CheckOutWrapper";
+import Inventory from "../../features/admin/Inventory";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
     children: [
-      {
-        element: <RequireAuth />,
-        children: [
-          {
-            path: "checkout",
-            element: <CheckOutWrapper />,
-          },
-          {
-            path: "orders",
-            element: <Orders />,
-          },
-        ],
-      },
-
       {
         path: "catalog",
         element: <Catalog />,
@@ -60,7 +47,6 @@ export const router = createBrowserRouter([
         path: "basket",
         element: <BasketPage />,
       },
-
       {
         path: "login",
         element: <Login />,
@@ -72,6 +58,31 @@ export const router = createBrowserRouter([
       {
         path: "*",
         element: <Navigate replace to="not-found" />,
+      },
+      // authenticated routes
+      {
+        element: <RequireAuth />,
+        children: [
+          {
+            path: "checkout",
+            element: <CheckOutWrapper />,
+          },
+          {
+            path: "orders",
+            element: <Orders />,
+          },
+          // admin route included in authenticated routes
+          {
+            path: "inventory",
+            element: <RequireAuth roles={["Admin"]} />,
+            children: [
+              {
+                path: "",
+                element: <Inventory />,
+              },
+            ],
+          },
+        ],
       },
     ],
   },
