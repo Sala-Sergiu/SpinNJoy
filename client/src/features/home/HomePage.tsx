@@ -15,21 +15,21 @@ export default function HomePage() {
       <Slider {...settings}>
         <div>
           <img
-            src="/images/hero1.jpg"
+            src="/images/image-1.png"
             alt="hero"
             style={{ display: "block", width: "100%", maxHeight: 500 }}
           />
         </div>
         <div>
           <img
-            src="/images/hero2.jpg"
+            src="/images/image-1.png"
             alt="hero"
             style={{ display: "block", width: "100%", maxHeight: 500 }}
           />
         </div>
         <div>
           <img
-            src="/images/hero3.jpg"
+            src="/images/image-1.png"
             alt="hero"
             style={{ display: "block", width: "100%", maxHeight: 500 }}
           />
