@@ -28,7 +28,7 @@ export default function ProductHero() {
         variant="h5"
         sx={{ mb: 4, mt: { xs: 4, sm: 10 } }}
       >
-        Discover unbeatable deals on top-quality bicycles every weekend.
+        Discover unbeatable deals on top-quality bicycles every weekend!
       </Typography>
       <Button
         component={Link}
