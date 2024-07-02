@@ -1,8 +1,10 @@
-import { ShoppingCart } from "@mui/icons-material";
+import { Menu, ShoppingCart } from "@mui/icons-material";
 import {
   AppBar,
   Badge,
   Box,
+  Divider,
+  Drawer,
   IconButton,
   List,
   ListItem,
@@ -13,6 +15,7 @@ import {
 import { Link, NavLink } from "react-router-dom";
 import { useAppSelector } from "../store/configureStore";
 import SignedInMenu from "./SignedInMenu";
+import React from "react";
 
 const midlinks = [
   {
@@ -40,10 +43,6 @@ const rightlinks = [
   },
 ];
 
-interface Props {
-  handleThemeChange: () => void;
-}
-
 const styles = {
   color: "inherit",
   textDecoration: "none",
@@ -56,21 +55,71 @@ const styles = {
   },
 };
 
-export default function Header({ handleThemeChange }: Props) {
+interface Props {
+  darkMode: boolean;
+  handleThemeChange: () => void;
+}
+
+export default function Header({ handleThemeChange, darkMode }: Props) {
   const { basket } = useAppSelector((state) => state.basket);
   const { user } = useAppSelector((state) => state.account);
   const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
 
+  const [open, setOpen] = React.useState(false);
+
+  const toggleDrawer = (newOpen: boolean) => () => {
+    setOpen(newOpen);
+  };
+
+  const DrawerList = (
+    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
+      <Box>
+        <Switch onChange={handleThemeChange} />
+      </Box>
+      <List>
+        {midlinks.map(({ title, path }) => (
+          <ListItem component={NavLink} to={path} key={path} sx={styles}>
+            {title.toUpperCase()}
+          </ListItem>
+        ))}
+        {user && user.roles?.includes("Admin") && (
+          <ListItem component={NavLink} to={"/inventory"} sx={styles}>
+            INVENTORY
+          </ListItem>
+        )}
+      </List>
+      <Divider />
+      <List>
+        {rightlinks.map(({ title, path }) => (
+          <ListItem component={NavLink} to={path} key={path} sx={styles}>
+            {title.toUpperCase()}
+          </ListItem>
+        ))}
+        {user ? (
+          <SignedInMenu />
+        ) : (
+          <List>
+            <ListItem>
+              <Switch onChange={handleThemeChange} />
+            </ListItem>
+          </List>
+        )}
+      </List>
+    </Box>
+  );
+
   return (
     <AppBar position="static">
       <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
-        <Box>
+        <Box display="flex" alignItems="center">
           <Typography variant="h5" component={NavLink} to="/" sx={styles}>
             SpinNJoy
           </Typography>
-          <Switch onChange={handleThemeChange} />
+          <Box sx={{ display: { xs: "none", md: "block" } }}>
+            <Switch checked={darkMode} onChange={handleThemeChange} />
+          </Box>
         </Box>
-        <Box>
+        <Box sx={{ display: { xs: "none", md: "flex" } }}>
           <List sx={{ display: "flex" }}>
             {midlinks.map(({ title, path }) => (
               <ListItem component={NavLink} to={path} key={path} sx={styles}>
@@ -84,7 +133,7 @@ export default function Header({ handleThemeChange }: Props) {
             )}
           </List>
         </Box>
-        <Box sx={{ display: "flex" }}>
+        <Box sx={{ display: { xs: "none", md: "flex" } }}>
           <IconButton
             component={Link}
             to="/basket"
@@ -108,6 +157,19 @@ export default function Header({ handleThemeChange }: Props) {
               ))}
             </List>
           )}
+        </Box>
+        <Box sx={{ display: { xs: "block", md: "none" } }}>
+          <IconButton
+            size="large"
+            edge="start"
+            color="inherit"
+            onClick={toggleDrawer(true)}
+          >
+            <Menu />
+          </IconButton>
+          <Drawer open={open} onClose={toggleDrawer(false)}>
+            {DrawerList}
+          </Drawer>
         </Box>
       </Toolbar>
     </AppBar>
