@@ -74,7 +74,7 @@ export default function Header({ handleThemeChange, darkMode }: Props) {
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
       <Box>
-        <Switch onChange={handleThemeChange} />
+        <Switch checked={darkMode} onChange={handleThemeChange} />
       </Box>
       <List>
         {midlinks.map(({ title, path }) => (
@@ -95,15 +95,6 @@ export default function Header({ handleThemeChange, darkMode }: Props) {
             {title.toUpperCase()}
           </ListItem>
         ))}
-        {user ? (
-          <SignedInMenu />
-        ) : (
-          <List>
-            <ListItem>
-              <Switch onChange={handleThemeChange} />
-            </ListItem>
-          </List>
-        )}
       </List>
     </Box>
   );
@@ -115,8 +106,12 @@ export default function Header({ handleThemeChange, darkMode }: Props) {
           <Typography variant="h5" component={NavLink} to="/" sx={styles}>
             SpinNJoy
           </Typography>
-          <Box sx={{ display: { xs: "none", md: "block" } }}>
-            <Switch checked={darkMode} onChange={handleThemeChange} />
+          <Box>
+            <Switch
+              style={{ color: "secondary" }}
+              checked={darkMode}
+              onChange={handleThemeChange}
+            />
           </Box>
         </Box>
         <Box sx={{ display: { xs: "none", md: "flex" } }}>
