@@ -38,9 +38,7 @@ namespace API.Controllers
 
                     Response.AddPaginationHeader(products.MetaData);
 
-                    return products;
-
-                    
+                    return products;                    
                 }
 
             [HttpGet("{id}", Name = "GetProduct")]

@@ -1,43 +1,21 @@
-import { Box, Typography } from "@mui/material";
-import Slider from "react-slick";
+import ProductHero from "../../app/components/ProductHero";
+import ProductValues from "../../app/components/ProductValues";
+import ProductCategories from "../../app/components/ProductCategories";
+import ProductHowItWorks from "../../app/components/ProductHowItWorks";
+import ProductCTA from "../../app/components/ProductCTA";
+import ProductSmokingHero from "../../app/components/ProductSmokingHero";
+import AppFooter from "../../app/components/AppFooter";
 
 export default function HomePage() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-  };
-
   return (
     <div style={{ overflow: "hidden" }}>
-      <Slider {...settings}>
-        <div>
-          <img
-            src="/images/image-1.png"
-            alt="hero"
-            style={{ display: "block", width: "100%", maxHeight: 500 }}
-          />
-        </div>
-        <div>
-          <img
-            src="/images/image-1.png"
-            alt="hero"
-            style={{ display: "block", width: "100%", maxHeight: 500 }}
-          />
-        </div>
-        <div>
-          <img
-            src="/images/image-1.png"
-            alt="hero"
-            style={{ display: "block", width: "100%", maxHeight: 500 }}
-          />
-        </div>
-      </Slider>
-      <Box display="flex" justifyContent="center" sx={{ p: 4 }}>
-        <Typography variant="h1">Welcome to the store</Typography>
-      </Box>
+      <ProductHero />
+      <ProductValues />
+      <ProductCategories />
+      <ProductHowItWorks />
+      <ProductCTA />
+      <ProductSmokingHero />
+      <AppFooter />
     </div>
   );
 }

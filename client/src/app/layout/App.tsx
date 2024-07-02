@@ -4,7 +4,6 @@ import {
   ThemeProvider,
   createTheme,
 } from "@mui/material";
-import Header from "./Header";
 import { useCallback, useEffect, useState } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
@@ -14,6 +13,7 @@ import { useAppDispatch } from "../store/configureStore";
 import { fetchBasketAsync } from "../../features/basket/basketSlice";
 import { fetchCurrentUser } from "../../features/account/accountSlice";
 import HomePage from "../../features/home/HomePage";
+import Header from "./Header";
 
 function App() {
   const location = useLocation();
@@ -42,9 +42,20 @@ function App() {
 
   const theme = createTheme({
     palette: {
+      primary: {
+        light: "#a7ffeb",
+        main: "#00bfa5",
+        dark: "#ef6c00",
+      },
+      secondary: {
+        light: "#ff7961",
+        main: "#ff5722",
+        dark: "#ba000d",
+      },
+
       mode: paletteType,
       background: {
-        default: paletteType === "light" ? "#eaeaea" : "#121212",
+        default: paletteType === "light" ? "#d6d3d1" : "#121212",
       },
     },
   });
