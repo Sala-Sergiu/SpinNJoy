@@ -73,9 +73,9 @@ export default function Header({ handleThemeChange, darkMode }: Props) {
 
   const DrawerList = (
     <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-      <Box>
+      {/* <Box>
         <Switch checked={darkMode} onChange={handleThemeChange} />
-      </Box>
+      </Box> */}
       <List>
         {midlinks.map(({ title, path }) => (
           <ListItem component={NavLink} to={path} key={path} sx={styles}>
@@ -107,11 +107,7 @@ export default function Header({ handleThemeChange, darkMode }: Props) {
             SpinNJoy
           </Typography>
           <Box>
-            <Switch
-              style={{ color: "secondary" }}
-              checked={darkMode}
-              onChange={handleThemeChange}
-            />
+            <Switch checked={darkMode} onChange={handleThemeChange} />
           </Box>
         </Box>
         <Box sx={{ display: { xs: "none", md: "flex" } }}>
