@@ -24,11 +24,11 @@ export default function Catalog() {
 
   return (
     <Grid container columnSpacing={4} rowSpacing={3}>
-      <Grid item xs={3}>
+      <Grid item xs={12} md={3}>
         <Paper sx={{ mb: 2 }}>
           <ProductSearch />
         </Paper>
-        <Paper sx={{ mb: 2, p: 2 }}>
+        <Paper sx={{ display: { xs: "none", md: "block" }, mb: 2, p: 2 }}>
           <RadioButtonGroup
             selectedValue={productParams.orderBy}
             options={sortOptions}
@@ -38,7 +38,7 @@ export default function Catalog() {
           />
         </Paper>
 
-        <Paper sx={{ mb: 2, p: 2 }}>
+        <Paper sx={{ display: { xs: "none", md: "block" }, mb: 2, p: 2 }}>
           <CheckboxButtons
             items={brands}
             checked={productParams.brands}
@@ -48,7 +48,7 @@ export default function Catalog() {
           />
         </Paper>
 
-        <Paper sx={{ mb: 2, p: 2 }}>
+        <Paper sx={{ display: { xs: "none", md: "block" }, mb: 2, p: 2 }}>
           <CheckboxButtons
             items={types}
             checked={productParams.types}
@@ -58,11 +58,11 @@ export default function Catalog() {
           />
         </Paper>
       </Grid>
-      <Grid item xs={9}>
+      <Grid item xs={12} md={9}>
         <ProductList products={products} />
       </Grid>
-      <Grid item xs={3}></Grid>
-      <Grid item xs={9} sx={{ mb: 2 }}>
+      <Grid item xs={3} md={3}></Grid>
+      <Grid item xs={12} md={9} sx={{ mb: 2 }}>
         {metaData && (
           <AppPagination
             metaData={metaData}

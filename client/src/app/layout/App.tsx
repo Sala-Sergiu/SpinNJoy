@@ -66,7 +66,8 @@ function App() {
     <ThemeProvider theme={theme}>
       <ToastContainer position="bottom-right" hideProgressBar theme="colored" />
       <CssBaseline />
-      <Header darkMode handleThemeChange={handleThemeChange} />
+      <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
+
       {loading ? (
         <LoadingComponent message="Initialising app..." />
       ) : location.pathname === "/" ? (

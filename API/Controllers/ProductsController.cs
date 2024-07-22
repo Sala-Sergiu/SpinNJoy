@@ -87,10 +87,10 @@ namespace API.Controllers
 
                 if (result) return CreatedAtRoute("GetProduct", new {id = product.Id}, product);
 
-                return BadRequest(new ProblemDetails{Title = "Problem creating new product"});
-            
+                return BadRequest(new ProblemDetails{Title = "Problem creating new product"});           
                 
             }
+            
             [Authorize(Roles = "Admin")]
             [HttpPut]
             public async Task<ActionResult<Product>> UpdateProduct([FromForm]UpdateProductDto productDto)
