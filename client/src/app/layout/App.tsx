@@ -5,18 +5,16 @@ import {
   createTheme,
 } from "@mui/material";
 import { useCallback, useEffect, useState } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoadingComponent from "./LoadingComponent";
 import { useAppDispatch } from "../store/configureStore";
 import { fetchBasketAsync } from "../../features/basket/basketSlice";
 import { fetchCurrentUser } from "../../features/account/accountSlice";
-import HomePage from "../../features/home/HomePage";
 import Header from "./Header";
 
 function App() {
-  const location = useLocation();
   const dispatch = useAppDispatch();
   const [loading, setLoading] = useState(true);
 
@@ -52,7 +50,6 @@ function App() {
         main: "#ff5722",
         dark: "#ba000d",
       },
-
       mode: paletteType,
       background: {
         default: paletteType === "light" ? "#d6d3d1" : "#121212",
@@ -67,16 +64,9 @@ function App() {
       <ToastContainer position="bottom-right" hideProgressBar theme="colored" />
       <CssBaseline />
       <Header darkMode={darkMode} handleThemeChange={handleThemeChange} />
-
-      {loading ? (
-        <LoadingComponent message="Initialising app..." />
-      ) : location.pathname === "/" ? (
-        <HomePage />
-      ) : (
-        <Container sx={{ mt: 4 }}>
-          <Outlet />
-        </Container>
-      )}
+      <Container sx={{ mt: 4 }}>
+        <Outlet />
+      </Container>
     </ThemeProvider>
   );
 }

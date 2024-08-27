@@ -1,7 +1,9 @@
+import { Typography } from "@mui/material";
+
 export default function ContactPage() {
   return (
     <div>
-      <h1>Contact Page</h1>
+      <Typography variant="h2">Contact Page</Typography>
     </div>
   );
 }
