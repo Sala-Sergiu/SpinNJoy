@@ -22,6 +22,10 @@ export default function PaymentForm({ cardState, onCardInputChange }: Props) {
   return (
     <>
       <Typography variant="h6" gutterBottom>
+        For card number type 4242 4242 4242 4242 and for the expiry date type
+        any date from the future
+      </Typography>
+      <Typography variant="h6" gutterBottom>
         Payment method
       </Typography>
       <Grid container spacing={3}>
